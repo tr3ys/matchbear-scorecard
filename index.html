@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match Bear, Inc. | Cashflow Command Center & Scorecard</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+              950: '#0f172a',
+            },
+            wealth: {
+              emerald: '#059669',
+              gold: '#d97706',
+              dark: '#0f172a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .pulse-glow {
+      box-shadow: 0 0 25px rgba(37, 99, 235, 0.35);
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased min-h-screen flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+
+  <!-- TOP SOVEREIGN HEADER BAR -->
+  <header class="bg-gradient-to-r from-slate-950 via-brand-950 to-blue-950 text-white border-b border-blue-900/40 sticky top-0 z-40 backdrop-blur-md bg-opacity-95">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-600 to-brand-800 flex items-center justify-center font-extrabold text-xl shadow-lg border border-blue-400/30">
+          MB
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg font-extrabold tracking-tight text-white">MATCH BEAR, INC.</h1>
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30">The Business Owner (B) Quadrant</span>
+          </div>
+          <p class="text-xs text-blue-200/80 font-medium">Sovereign Asset Velocity & Weekly Execution Command Center</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="text-right hidden sm:block">
+          <p class="text-xs font-bold text-white">Trey Seals</p>
+          <p class="text-[11px] text-blue-400 font-mono">Co-Founder & Chief Revenue Officer</p>
+        </div>
+        <div class="h-8 w-px bg-blue-800/60 hidden sm:block"></div>
+        <button onclick="exportScorecardCSV()" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white shadow-md transition transform active:scale-95">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          Export Ledger
+        </button>
+      </div>
+    </div>
+
+    <!-- CASHFLOW FAST-TRACK SPEEDOMETER & COUNTDOWN RIBBON -->
+    <div class="bg-slate-900/90 border-t border-blue-900/40 px-4 sm:px-6 lg:px-8 py-3">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+        <!-- COUNTDOWN TO THANKSGIVING SPRINT -->
+        <div class="bg-blue-950/80 rounded-xl p-3 border border-blue-800/60 pulse-glow flex items-center justify-between">
+          <div>
+            <span class="text-[10px] uppercase tracking-wider font-extrabold text-blue-400">Thanksgiving Sprint Countdown</span>
+            <div class="flex items-baseline gap-1.5 mt-0.5">
+              <span id="countdown-days" class="text-2xl font-extrabold text-white font-mono">--</span>
+              <span class="text-xs text-blue-300">Days to Nov 20</span>
+            </div>
+          </div>
+          <div class="text-right font-mono text-[11px] text-emerald-400 font-semibold bg-emerald-950/60 px-2.5 py-1 rounded-lg border border-emerald-800/50">
+            Active Sprint
+          </div>
+        </div>
+
+        <!-- FAST-TRACK PASSIVE CASHFLOW -->
+        <div class="bg-slate-950/80 rounded-xl p-3 border border-slate-800 flex items-center justify-between">
+          <div>
+            <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-400">Target Monthly Executive Draw</span>
+            <div class="flex items-baseline gap-1 mt-0.5">
+              <span class="text-xl font-bold text-emerald-400 font-mono">$7,000</span>
+              <span class="text-[11px] text-slate-400">/ mo ($85k ARR)</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-emerald-500 bg-emerald-950 px-2 py-1 rounded">B Quadrant</span>
+        </div>
+
+        <!-- SEED TREASURY RUNWAY -->
+        <div class="bg-slate-950/80 rounded-xl p-3 border border-slate-800 flex items-center justify-between">
+          <div>
+            <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-400">Seed Treasury Target</span>
+            <div class="flex items-baseline gap-1 mt-0.5">
+              <span class="text-xl font-bold text-blue-300 font-mono">$325,000</span>
+              <span class="text-[11px] text-blue-400">+ $250k SSBCI</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-blue-400 bg-blue-950 px-2 py-1 rounded">Rule 504</span>
+        </div>
+
+        <!-- SPEEDOMETER ASSET VELOCITY -->
+        <div class="bg-slate-950/80 rounded-xl p-3 border border-slate-800 flex items-center justify-between">
+          <div>
+            <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-400">Asset Velocity (Pipeline)</span>
+            <div class="flex items-baseline gap-1 mt-0.5">
+              <span class="text-xl font-bold text-amber-400 font-mono" id="total-pipeline-badge">$465,000</span>
+              <span class="text-[11px] text-slate-400">100 Target Accts</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-amber-500 bg-amber-950 px-2 py-1 rounded">Fast-Track</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 flex flex-col w-full space-y-6">
+
+    <!-- MINDSET CARD: THE CASHFLOW QUADRANT REALITY CHECK -->
+    <section class="bg-gradient-to-r from-blue-950/70 via-slate-900 to-slate-900 rounded-2xl p-5 border border-blue-800/40 shadow-xl relative overflow-hidden">
+      <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-400/30 font-mono">MINDSET SHIFT: E &rarr; B</span>
+            <h2 class="text-base font-bold text-white">You Own the System. You Do Not Trade Time for Money.</h2>
+          </div>
+          <p class="text-xs text-slate-300 mt-1 max-w-3xl">
+            As a Manifesting Generator operating in the <strong class="text-white">Business Owner (B)</strong> quadrant, your genius lies in initiating systems that generate cashflow independently of your hourly labor. The $7,000/month executive draw is an equity investment funded by the system—justified directly by Daniel's enrichment throughput, Trey's outbound touches, and Eli's code execution.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="toggleModal('addMetricModal')" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold shadow-lg transition flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            Add Scorecard Metric
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: INTERACTIVE WEEKLY PERFORMANCE SCORECARD -->
+    <section class="bg-slate-900/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden flex flex-col">
+      <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex flex-wrap justify-between items-center gap-3">
+        <div>
+          <h3 class="font-bold text-sm text-white flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span>
+            Organizational Performance Metrics Scorecard (Weekly Ledger)
+          </h3>
+          <p class="text-[11px] text-slate-400">Track your weekly velocity across commercial sales, fundraising, grants, and technical execution.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-slate-300 bg-slate-800 px-3 py-1 rounded-lg font-mono">
+            Status: <strong class="text-emerald-400">100% Weekly Compliance</strong>
+          </span>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="bg-slate-950 text-slate-400 font-semibold uppercase tracking-wider text-[10px] border-b border-slate-800">
+              <th class="py-3 px-4">#</th>
+              <th class="py-3 px-4">Business Pillar</th>
+              <th class="py-3 px-4 min-w-[200px]">Performance Metric</th>
+              <th class="py-3 px-4 text-center">Weekly Target</th>
+              <th class="py-3 px-4">Primary Owner</th>
+              <th class="py-3 px-4 min-w-[200px]">Verification Source</th>
+              <th class="py-3 px-4 text-center">Status</th>
+              <th class="py-3 px-4 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="scorecardTableBody" class="divide-y divide-slate-800/70 text-slate-300">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-slate-950 px-5 py-3 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400 font-mono">
+        <span>Review Cadence: Every Friday at 9:00 AM PT</span>
+        <span class="text-blue-400">Rule: If it's not on the scorecard, it doesn't exist in the operating rhythm.</span>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE THANKSGIVING SPRINT WEEKLY TRACKER (INTERACTIVE CHECKLIST) -->
+    <section class="bg-slate-900/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden p-5">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 pb-4 border-b border-slate-800">
+        <div>
+          <h3 class="font-bold text-sm text-white flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+            Thanksgiving Sprint Tracker (Now through Nov 20, 2026)
+          </h3>
+          <p class="text-xs text-slate-400">Check off your weekly sprint milestones to maintain relentless execution momentum.</p>
+        </div>
+        <div class="text-xs font-mono text-blue-400 bg-blue-950/60 px-3 py-1.5 rounded-lg border border-blue-800/40">
+          Sprint Horizon: 8 Weeks to Thanksgiving
+        </div>
+      </div>
+
+      <div class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="sprint-weeks-container">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ADD METRIC MODAL -->
+  <div id="addMetricModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+    <div class="bg-slate-900 rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-800">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-800">
+        <h3 class="font-bold text-base text-white">Add New Scorecard Metric</h3>
+        <button onclick="toggleModal('addMetricModal')" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
+      </div>
+      <form id="metricForm" onsubmit="handleNewMetric(event)" class="mt-4 space-y-3.5 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">Business Pillar</label>
+          <select id="new-pillar" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-100">
+            <option value="Commercial GTM">Commercial GTM</option>
+            <option value="Product & Sales">Product & Sales</option>
+            <option value="Capital & Fundraising">Capital & Fundraising</option>
+            <option value="Non-Dilutive Grants">Non-Dilutive Grants</option>
+            <option value="Product & Engineering">Product & Engineering</option>
+            <option value="Financial Discipline">Financial Discipline</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">Performance Metric</label>
+          <input type="text" id="new-metric" required placeholder="e.g., Enterprise Discovery Calls" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-100 focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">Weekly Target</label>
+            <input type="text" id="new-target" required placeholder="e.g., 5 calls" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-100 font-mono">
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">Primary Owner</label>
+            <input type="text" id="new-owner" required placeholder="e.g., Trey" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-100">
+          </div>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">Verification Source</label>
+          <input type="text" id="new-source" required placeholder="e.g., Google Calendar / CRM" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-100">
+        </div>
+        <div class="pt-3 flex justify-end gap-2 border-t border-slate-800">
+          <button type="button" onclick="toggleModal('addMetricModal')" class="px-4 py-2 rounded-xl border border-slate-800 text-slate-400 hover:bg-slate-800 text-xs font-semibold">Cancel</button>
+          <button type="submit" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-md">Save Metric</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-blue-600 text-white px-4 py-2.5 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+    <span>✓</span>
+    <span id="toast-msg">Operation completed successfully.</span>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    // Initial scorecard data from Session 6 Homework
+    let scorecardData = [
+      { id: 1, pillar: "Commercial GTM", metric: "Target Account Research & Enrichment", target: "25 accounts", owner: "Daniel", source: "Master Pipeline Tracker", status: "On Track" },
+      { id: 2, pillar: "Commercial GTM", metric: "Executive Outbound Touches", target: "20 touches", owner: "Trey", source: "CRM / LinkedIn Log", status: "On Track" },
+      { id: 3, pillar: "Commercial GTM", metric: "Warm Advisory Intros", target: "3 intros", owner: "Trey", source: "Calendar / Network Log", status: "On Track" },
+      { id: 4, pillar: "Commercial GTM", metric: "Discovery & Needs Analysis Calls", target: "5 calls", owner: "Trey", source: "Google Calendar", status: "On Track" },
+      { id: 5, pillar: "Product & Sales", metric: "Live Product Demos", target: "2 demos", owner: "Eli / Trey", source: "Staging Demo Log", status: "On Track" },
+      { id: 6, pillar: "Commercial GTM", metric: "Active Pilot Proposals Issued", target: "1 proposal", owner: "Hawk / Trey", source: "Deal Pipeline Tracker", status: "In Progress" },
+      { id: 7, pillar: "Capital & Fundraising", metric: "Angel / Investor Cultivation Touchpoints", target: "5 touchpoints", owner: "Hawk / Trey", source: "Investor Pipeline Sheet", status: "On Track" },
+      { id: 8, pillar: "Non-Dilutive Grants", metric: "Grant Applications Progressed", target: "1 submission", owner: "Denna / Trey", source: "Grantable.co Dashboard", status: "On Track" },
+      { id: 9, pillar: "Product & Engineering", metric: "Second Look Feature Sprints / Integrations", target: "1 sprint close", owner: "Eli", source: "GitHub Repository", status: "On Track" },
+      { id: 10, pillar: "Financial Discipline", metric: "Treasury Burn & Capital Tracking", target: "Weekly Review", owner: "Hawk / Trey", source: "Corporate Ledger / Bank Sync", status: "On Track" }
+    ];
+
+    // Thanksgiving Sprint Weeks (Sept 24 to Nov 20, 2026)
+    const sprintWeeks = [
+      { week: 1, dates: "Sep 24 – Oct 1", focus: "Master 100 Account Queue & Advisory Launch", completed: true },
+      { week: 2, dates: "Oct 2 – Oct 8", focus: "20 Outbound Touches & PolicyLink Follow-Up", completed: true },
+      { week: 3, dates: "Oct 9 – Oct 15", focus: "First 5 Discovery Calls & Staging Demo QA", completed: false },
+      { week: 4, dates: "Oct 16 – Oct 22", focus: "Advisory Bridge Activations (King David / Xandria)", completed: false },
+      { week: 5, dates: "Oct 23 – Oct 29", focus: "Camelback Ventures Check-in & Pilot Proposals", completed: false },
+      { week: 6, dates: "Oct 30 – Nov 5", focus: "Mid-Quarter Review & Public Sector Pipeline", completed: false },
+      { week: 7, dates: "Nov 6 – Nov 12", focus: "Seed Syndicate SAFE Closings ($325k target)", completed: false },
+      { week: 8, dates: "Nov 13 – Nov 20", focus: "Thanksgiving Executive Alignment & Sprint Review", completed: false }
+    ];
+
+    function renderScorecard() {
+      const tbody = document.getElementById("scorecardTableBody");
+      tbody.innerHTML = "";
+
+      scorecardData.forEach((item, index) => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-slate-800/50 transition-colors";
+
+        let statusBadge = item.status === 'On Track' 
+          ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' 
+          : 'bg-amber-500/20 text-amber-300 border-amber-500/30';
+
+        tr.innerHTML = `
+          <td class="py-3 px-4 text-slate-500 font-mono text-[11px]">${index + 1}</td>
+          <td class="py-3 px-4 font-semibold text-blue-400">${item.pillar}</td>
+          <td class="py-3 px-4 text-slate-100 font-medium">${item.metric}</td>
+          <td class="py-3 px-4 text-center font-mono font-bold text-white">${item.target}</td>
+          <td class="py-3 px-4 text-slate-300 font-medium">${item.owner}</td>
+          <td class="py-3 px-4 text-slate-400 font-mono text-[11px]">${item.source}</td>
+          <td class="py-3 px-4 text-center">
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-semibold border ${statusBadge}">${item.status}</span>
+          </td>
+          <td class="py-3 px-4 text-center">
+            <button onclick="deleteMetric(${item.id})" class="text-slate-500 hover:text-rose-400 p-1 rounded transition" title="Delete metric">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderSprintWeeks() {
+      const container = document.getElementById("sprint-weeks-container");
+      container.innerHTML = "";
+
+      sprintWeeks.forEach((sw) => {
+        const div = document.createElement("div");
+        div.className = `p-4 rounded-xl border transition-all ${sw.completed ? 'bg-emerald-950/30 border-emerald-800/40' : 'bg-slate-950/60 border-slate-800'}`;
+        div.innerHTML = `
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-extrabold text-blue-400 font-mono">Week ${sw.week} (${sw.dates})</span>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" ${sw.completed ? 'checked' : ''} onchange="toggleSprintWeek(${sw.week})" class="sr-only peer">
+              <div class="w-8 h-4 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-emerald-600"></div>
+            </label>
+          </div>
+          <p class="text-xs font-medium text-slate-200">${sw.focus}</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function toggleSprintWeek(weekNum) {
+      const week = sprintWeeks.find(w => w.week === weekNum);
+      if (week) {
+        week.completed = !week.completed;
+        renderSprintWeeks();
+        showToast(`Sprint Week ${weekNum} status updated!`);
+      }
+    }
+
+    function calculateCountdown() {
+      // Target: Nov 20, 2026
+      const thanksgivingSprintEnd = new Date('2026-11-20T23:59:59');
+      const now = new Date();
+      const diffTime = thanksgivingSprintEnd - now;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      document.getElementById("countdown-days").innerText = diffDays > 0 ? diffDays : 0;
+    }
+
+    function toggleModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal.classList.contains("hidden")) {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      } else {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+    }
+
+    function handleNewMetric(e) {
+      e.preventDefault();
+      const newM = {
+        id: Date.now(),
+        pillar: document.getElementById("new-pillar").value,
+        metric: document.getElementById("new-metric").value,
+        target: document.getElementById("new-target").value,
+        owner: document.getElementById("new-owner").value,
+        source: document.getElementById("new-source").value,
+        status: "On Track"
+      };
+      scorecardData.push(newM);
+      renderScorecard();
+      toggleModal('addMetricModal');
+      document.getElementById("metricForm").reset();
+      showToast("New scorecard metric successfully added!");
+    }
+
+    function deleteMetric(id) {
+      scorecardData = scorecardData.filter(m => m.id !== id);
+      renderScorecard();
+      showToast("Metric removed.");
+    }
+
+    function exportScorecardCSV() {
+      let csv = "ID,Business Pillar,Performance Metric,Weekly Target,Primary Owner,Verification Source,Status\n";
+      scorecardData.forEach(item => {
+        csv += `"${item.id}","${item.pillar}","${item.metric}","${item.target}","${item.owner}","${item.source}","${item.status}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `MatchBear_Scorecard_Thanksgiving_Sprint_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast("Scorecard exported successfully!");
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      document.getElementById("toast-msg").innerText = msg;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 3500);
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      renderScorecard();
+      renderSprintWeeks();
+      calculateCountdown();
+    });
+  </script>
+</body>
+</html>
