@@ -1,0 +1,11 @@
+ID,Business Pillar,Performance Metric,Weekly Target,Primary Owner,Verification Source,Status
+"1","Commercial GTM","Target Account Research & Enrichment","25 accounts","Daniel","Master Pipeline Tracker","On Track"
+"2","Commercial GTM","Executive Outbound Touches","20 touches","Trey","CRM / LinkedIn Log","On Track"
+"3","Commercial GTM","Warm Advisory Intros","3 intros","Trey","Calendar / Network Log","On Track"
+"4","Commercial GTM","Discovery & Needs Analysis Calls","5 calls","Trey","Google Calendar","On Track"
+"5","Product & Sales","Live Product Demos","2 demos","Eli / Trey","Staging Demo Log","On Track"
+"6","Commercial GTM","Active Pilot Proposals Issued","1 proposal","Hawk / Trey","Deal Pipeline Tracker","In Progress"
+"7","Capital & Fundraising","Angel / Investor Cultivation Touchpoints","5 touchpoints","Hawk / Trey","Investor Pipeline Sheet","On Track"
+"8","Non-Dilutive Grants","Grant Applications Progressed","1 submission","Denna / Trey","Grantable.co Dashboard","On Track"
+"9","Product & Engineering","Second Look Feature Sprints / Integrations","1 sprint close","Eli","GitHub Repository","On Track"
+"10","Financial Discipline","Treasury Burn & Capital Tracking","Weekly Review","Hawk / Trey","Corporate Ledger / Bank Sync","On Track"
